@@ -92,8 +92,7 @@ public class ThemThanhVienUI extends JDialog {
                         try {
                             String sql = "INSERT INTO `user`(`FullName`, `Email`, `Phone`, `Address`) VALUES('" + txtFullName.getText() + "','" + email.toLowerCase() + "','" + phone + "','" + txtAddress.getText() + "')";
                             statement = conn.createStatement();
-                            int x = statement.executeUpdate(sql);
-                            ketqua = x;
+                            ketqua = statement.executeUpdate(sql);
                             dispose();
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -107,8 +106,7 @@ public class ThemThanhVienUI extends JDialog {
                                     + "`Address` = '" + txtAddress.getText() + "' "
                                     + " WHERE `IDUser` = '" + txtIDUser.getText() + "'";
                             statement = conn.createStatement();
-                            int x = statement.executeUpdate(sql);
-                            ketqua = x;
+                            ketqua = statement.executeUpdate(sql);
                             dispose();
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -120,6 +118,11 @@ public class ThemThanhVienUI extends JDialog {
         });
     }
 
+/*    Phương thức matches() trong Java xác định có hay không chuỗi này so khớp (match) với regular expression đã cho. 
+ *    Một dẫn chứng của phương thức này là form dạng str.matches(regex) 
+ *    biến đổi chính xác kết quả giống như trong Pattern.matches(regex, str).
+ */
+    
     private boolean valPhone(String phone) {
         String intRegex = "^[0-9][0-9]{9}$";
         Pattern phonePat = Pattern.compile(intRegex, Pattern.CASE_INSENSITIVE);
